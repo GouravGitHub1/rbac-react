@@ -3,9 +3,10 @@ import { getLocalStorage } from "./hooks/localStorage";
 
 
 export const ProtectedLayout = () => {
-  const storedValue = getLocalStorage()
+  const storedValue = getLocalStorage();
 
   const outlet = useOutlet(); 
+
   if (!storedValue||!storedValue?.isAuthenticated) {
     return <Navigate to="/login" />;
   }

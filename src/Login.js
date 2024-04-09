@@ -26,7 +26,8 @@ export const LoginForm = () => {
     try {
       setLoading(true);
       const res = await instanceAxios.post("/user/login", apiInput);
-      console.log("res", res);
+      console.log("after login api call res", res);
+
       await setLocalStorage({
         isAuthenticated: true,
         userId: res.data.userId,
@@ -35,6 +36,9 @@ export const LoginForm = () => {
       setLoading(false);
       setSuccessful(true);
     } catch (e) {
+      alert(e.response.data);
+      setLoading(false);
+      setSuccessful(false);
       console.log(e);
     }
   };
