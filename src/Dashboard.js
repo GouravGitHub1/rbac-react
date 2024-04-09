@@ -26,11 +26,8 @@ const Dashboard = () => {
     () => permission?.[roleId]?.permissionSet?.has(2),
     [permission, roleId]
   );
-  const isGrantPermission = useMemo(
-    () => permission?.[roleId]?.permissionSet?.has(5),
-    [permission, roleId]
-  );
-  const [value, setValue] = React.useState(isWritePermission ? 0 : 1);
+  
+  const [value, setValue] = React.useState(1);
 
   return (
     <>

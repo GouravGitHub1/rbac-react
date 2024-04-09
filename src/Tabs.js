@@ -14,15 +14,19 @@ import { setLocalStorage } from "./hooks/localStorage";
 import { useNavigate } from "react-router-dom";
 
 export default function AppTabs({ value, setValue }) {
+
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { isReadOnly } = useReadOnly();
   const open = React.useMemo(() => Boolean(anchorEl), [anchorEl]);
   const { permission } = useAuth();
   const { roleId } = useRole();
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -30,10 +34,6 @@ export default function AppTabs({ value, setValue }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const isGrantPermission = React.useMemo(
-    () => permission?.[roleId]?.permissionSet?.has(5),
-    [permission, roleId]
-  );
 
   const onHandleClick = async () => {
     await setLocalStorage(null);

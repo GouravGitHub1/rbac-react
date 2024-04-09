@@ -13,6 +13,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
 
   const [loading, setLoading] = useState(false);
+  
   const [permission, setPermission] = useState(null);
   useEffect(() => {
     async function getPermission() {
@@ -40,6 +41,7 @@ export const AuthProvider = ({ children }) => {
     }),
     [permission]
   );
+
   if (loading) {
     return (
       <Box
